@@ -1,0 +1,207 @@
+{
+  "metadata": {
+    "spec-version": "1.5"
+  },
+  "display-name": "JMS",
+  "configuration-groups": [
+    {
+      "label": "Basic",
+      "properties": [
+        {
+          "widget-type": "textbox",
+          "label": "Reference Name",
+          "name": "referenceName"
+        },
+        {
+          "widget-type": "textbox",
+          "label": "Connection Factory",
+          "name": "connectionFactory",
+          "widget-attributes": {
+            "default": "ConnectionFactory"
+          }
+        },
+        {
+          "widget-type": "textbox",
+          "label": "JMS Username",
+          "name": "jmsUsername"
+        },
+        {
+          "widget-type": "password",
+          "label": "JMS Password",
+          "name": "jmsPassword"
+        },
+        {
+          "widget-type": "text",
+          "label": "Provider URL",
+          "name": "providerUrl",
+          "widget-attributes": {
+            "placeholder": "tcp://hostname:61616"
+          }
+        },
+        {
+          "widget-type": "select",
+          "label": "Type",
+          "name": "type",
+          "widget-attributes": {
+            "values": [
+              "Queue",
+              "Topic"
+            ],
+            "default": "Queue"
+          }
+        },
+        {
+        "widget-type": "textbox",
+        "label": "Source Queue or Topic Name",
+        "name": "sourceName"
+        },
+        {
+          "widget-type": "textbox",
+          "label": "JNDI Context Factory",
+          "name": "jndiContextFactory",
+          "widget-attributes": {
+            "default": "org.apache.activemq.jndi.ActiveMQInitialContextFactory"
+          }
+        },
+        {
+          "widget-type": "textbox",
+          "label": "JNDI Username",
+          "name": "jndiUsername"
+        },
+        {
+          "widget-type": "password",
+          "label": "JNDI Password",
+          "name": "jndiPassword"
+        },
+        {
+          "widget-type": "toggle",
+          "name": "messageHeader",
+          "label": "Keep Message Header",
+          "widget-attributes": {
+            "default": "true",
+            "on": {
+              "value": "true",
+              "label": "True"
+            },
+            "off": {
+              "value": "false",
+              "label": "False"
+            }
+          }
+        },
+        {
+          "widget-type": "toggle",
+          "name": "messageProperties",
+          "label": "Keep Message Properties",
+          "widget-attributes": {
+            "default": "true",
+            "on": {
+              "value": "true",
+              "label": "True"
+            },
+            "off": {
+              "value": "false",
+              "label": "False"
+            }
+          }
+        },
+        {
+          "widget-type": "select",
+          "label": "Message Type",
+          "name": "messageType",
+          "widget-attributes": {
+            "values": [
+              "Message",
+              "Text",
+              "Bytes",
+              "Map",
+              "Object"
+            ],
+            "default": "Text"
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "schema",
+      "widget-type": "schema",
+      "widget-attributes": {
+        "default-schema": {
+          "name": "etlSchemaBody",
+          "type": "record",
+          "fields": [
+            {
+              "name": "header",
+              "type": {
+                "type": "record",
+                "name": "header",
+                "fields": [
+                  {
+                    "name": "messageId",
+                    "type": ["string", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "messageTimestamp",
+                    "type": ["long", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "correlationId",
+                    "type": ["string", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "replyTo",
+                    "type": ["string", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "destination",
+                    "type": ["string", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "deliveryNode",
+                    "type": ["int", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "redelivered",
+                    "type": ["boolean", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "type",
+                    "type": ["boolean", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "expiration",
+                    "type": ["long", "null"],
+                    "default": null
+                  },
+                  {
+                    "name": "priority",
+                    "type": ["int", "null"],
+                    "default": null
+                  }
+                ]
+              }
+            },
+            {
+              "name": "body",
+              "type": "string"
+            },
+            {
+              "name": "properties",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
